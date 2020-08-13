@@ -4,7 +4,7 @@
   "description": "TO DO Application build using electron application",
   "main": "index.js",
   "scripts": {
-    "electron": "electron ."
+    "start": "electron ."
   },
   "author": "akhil vinayak p",
   "license": "ISC",
