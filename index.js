@@ -17,7 +17,16 @@ app.on('ready',()=>{
 
 // creating a new window
 function create_addWindow() {
-
+    addWindow = new BrowserWindow({
+        height:140,
+        width:400,
+        darkTheme:true,
+        maximizable:false,// linux won't work
+        minimizable:false,// linux won't work
+        autoHideMenuBar:true,
+        webPreferences:{nodeIntegration:true}
+    })
+    addWindow.loadURL(`file://${__dirname}/Templates/add.html`);
 }
 const menuTemplate = [
     {
