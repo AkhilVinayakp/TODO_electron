@@ -49,14 +49,7 @@ const menuTemplate = [
             {
                 label: "about",//TODO delete the click event test failed
                 click() {
-                    //mainWindow.webContents.send('pushInfo',
-                    //     {
-                    //     arch : process.arch,
-                    //     platform : process.platform,
-                    //     user: process.env.USER
-                    // }
-                      //  p
-                    //);
+                    // creatAboutWindow();
                 }
             }
         ]
