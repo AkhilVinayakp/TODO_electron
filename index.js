@@ -26,6 +26,12 @@ const menuTemplate = [
                 click() {
                     // creatAboutWindow();
                 }
+            },
+            {
+                label: "devops",
+                click(item, focusedWindow) {
+                    focusedWindow.toggleDevTools();
+                }
             }
         ]
     },
@@ -34,6 +40,8 @@ const menuTemplate = [
 if(process.platform === 'darvin'){
     menuTemplate.unshift({});
 }
+// adding developer options
+
 const mainMenu = Menu.buildFromTemplate(menuTemplate);
 app.on('ready',()=>{
     mainWindow = new BrowserWindow({
@@ -45,7 +53,6 @@ app.on('ready',()=>{
     // creating menubar from the template
     // close all the windows if the main window is closed
     mainWindow.on('closed',()=>app.quit());
-
     Menu.setApplicationMenu(mainMenu);
 })
 
@@ -62,6 +69,6 @@ function create_addWindow() {
         title:"ADD NEW TODO"
     })
     addWindow.loadURL(`file://${__dirname}/Templates/add.html`);
-    Menu.setApplicationMenu(null); //TODO main application menu disabled but not restored after exiting // DONE
-    addWindow.on('closed',()=> Menu.setApplicationMenu(mainMenu))
+    Menu.setApplicationMenu(Menu.buildFromTemplate([{label:'Dev', click(item,focusWindow){focusWindow.toggleDevTools();}}])); //TODO main application menu disabled but not restored after exiting // DONE
+    addWindow.on('closed',()=> Menu.setApplicationMenu(mainMenu));
 }
